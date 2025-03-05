@@ -1,23 +1,25 @@
+// WasteManagementSystem.java
 public class WasteManagementSystem {
     public static void main(String[] args) {
-        WasteCollector organicCollector = new OrganicWasteCollector();
-        WasteCollector recyclableCollector = new RecyclableWasteCollector();
-        WasteCollector hazardousCollector = new HazardousWasteCollector();
+        // Create Waste Collectors
+        OrganicWasteCollector organicCollector = new OrganicWasteCollector();
+        RecyclableWasteCollector recyclableCollector = new RecyclableWasteCollector();
+        HazardousWasteCollector hazardousCollector = new HazardousWasteCollector();
 
-        // Setting up the chain
+        // Set the chain of responsibility
         organicCollector.setNextCollector(recyclableCollector);
         recyclableCollector.setNextCollector(hazardousCollector);
 
-        // Test cases
-        WasteContainer organicWaste = new WasteContainer("Organic", 50);
-        WasteContainer recyclableWaste = new WasteContainer("Recyclable", 30);
-        WasteContainer hazardousWaste = new WasteContainer("Hazardous", 20);
-        WasteContainer unknownWaste = new WasteContainer("Metal", 40);
+        // Create waste containers
+        WasteContainer organicWaste = new WasteContainer("organic", 10);
+        WasteContainer recyclableWaste = new WasteContainer("recyclable", 15);
+        WasteContainer hazardousWaste = new WasteContainer("hazardous", 20);
+        WasteContainer unknownWaste = new WasteContainer("unknown", 9);
 
-        System.out.println("Processing waste collection...");
-        organicCollector.collectWaste(organicWaste);
-        organicCollector.collectWaste(recyclableWaste);
-        organicCollector.collectWaste(hazardousWaste);
-        organicCollector.collectWaste(unknownWaste);
+        // Process waste
+        organicCollector.collectWaste(organicWaste);  // Should be handled by OrganicWasteCollector
+        organicCollector.collectWaste(recyclableWaste);  // Should pass to RecyclableWasteCollector
+        organicCollector.collectWaste(hazardousWaste);  // Should pass to HazardousWasteCollector
+        organicCollector.collectWaste(unknownWaste);  // No collector found
     }
 }
