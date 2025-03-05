@@ -20,4 +20,4 @@ Validation:
 Ensure that waste containers are correctly identified and disposed of by the appropriate waste collector in the chain.
 
 
-![UML class (1)](https://github.com/user-attachments/assets/d0d14579-7eec-4759-994f-6e05ae1e57e2)
+![UML class (2)](https://github.com/user-attachments/assets/7fbb5951-f099-457a-b24a-a371e2ff3f65)
